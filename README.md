@@ -16,31 +16,33 @@ $ git clone https://github.com/agenciasys/as-capacita-phalcon-api.git
 #####Estrutura do Projeto
 ```
 as-capacita-phalcon-api/
-    app/
-    configs/
-    controllers/
-    exceptions/
-    mappers/
-    modules/
-        users/
-            controllers/
-            models/
-    responses/
-    library/
-        agenciasys/
-            error/
-            exception/
-    private/
-    public/
-    routes/
-        collections/
-    vendor/
+├── app
+│   ├── configs
+│   ├── controllers
+│   ├── exceptions
+│   ├── models
+│   ├── modules
+│   │   └── users
+│   │       ├── controllers
+│   │       └── models
+│   ├── responses
+│   └── traits
+├── library
+│   └── agenciasys
+│       ├── error
+│       └── exception
+├── private
+├── public
+│   └── routes
+│       └── collections
+└── vendor
 ```
 
 #####Variáveis de Ambiente
 > Criar arquivo `.env` no diretório `app/configs` com o código abaixo
 
 ```
+DB_HOST = "localhost"
 DB_USER = "user"
 DB_PASS = "passwd"
 DB_SCHEMA = "as-capacita-phalcon"
