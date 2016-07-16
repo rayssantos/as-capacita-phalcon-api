@@ -64,3 +64,13 @@ ALTER TABLE users
 $ cd /www/as-capacita-phalcon-api/
 $ composer install
 ```
+
+#####Banco de Dados
+```sql
+CREATE TABLE `phones` (
+    `iPhoneId` INT( 10 ) UNSIGNED AUTO_INCREMENT NOT NULL,
+    `iUserId` Int( 10 ) NOT NULL,
+    `sPhone` VARCHAR( 15 ) NOT NULL,
+    PRIMARY KEY ( `iPhoneId` ) )
+ENGINE = InnoDB;
+```
