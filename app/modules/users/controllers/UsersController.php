@@ -22,15 +22,24 @@ class UsersController extends RESTController
     public function getUsers()
     {
         try {
-            $users = (new Users())->find(
-                [
-                    'conditions' => 'true ' . $this->getConditions(),
-                    'columns' => $this->partialFields,
-                    'limit' => $this->limit
-                ]
-            );
+            $query = new \Phalcon\Mvc\Model\Query\Builder();
+            $query->addFrom('\App\Users\Models\Users', 'Users')
+                ->columns(
+                    [
+                        'Users.iUserId',
+                        'Users.sName',
+                        'Users.sEmail',
+                        'Phones.iPhoneId',
+                        'Phones.iUserId as iPhoneUserId',
+                        'Phones.sPhone',
+                    ]
+                )
+                ->leftJoin('\App\Users\Models\Phones', 'Phones.iUserId = Users.iUserId', 'Phones')
+                ->where('true');
 
-            return $users;
+            return $query
+                ->getQuery()
+                ->execute();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage(), $e->getCode());
         }

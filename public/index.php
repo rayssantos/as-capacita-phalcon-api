@@ -37,11 +37,13 @@ ErrorHandler::set();
 ExceptionHandler::set();
 
 if (isset($dotenv)) {
-    $dotenv->required([
-        'DB_USER',
-        'DB_PASS',
-        'DB_SCHEMA',
-    ])->notEmpty();
+    $dotenv->required(
+        [
+            'DB_USER',
+            'DB_PASS',
+            'DB_SCHEMA',
+        ]
+    )->notEmpty();
 }
 
 /**
