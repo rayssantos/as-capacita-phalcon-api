@@ -24,6 +24,11 @@ if (file_exists($composerAutoload)) {
     if (file_exists($environmentVarsFile)) {
         $dotenv = new Dotenv\Dotenv($environmentVarsDir);
         $dotenv->load();
+        $dotenv->required([
+            'DB_USER',
+            'DB_PASS',
+            'DB_SCHEMA',
+        ])->notEmpty();
     }
 }
 
@@ -35,14 +40,6 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
 
 ErrorHandler::set();
 ExceptionHandler::set();
-
-if (isset($dotenv)) {
-    $dotenv->required([
-        'DB_USER',
-        'DB_PASS',
-        'DB_SCHEMA',
-    ])->notEmpty();
-}
 
 /**
  * The DI is our direct injector.  It will store pointers to all of our services

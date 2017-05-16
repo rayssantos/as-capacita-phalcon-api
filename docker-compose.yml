@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+    web:
+        image: nginx
+        environment:
+            - TERM=xterm
+        volumes:
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./docker/nginx/as-capacita-phalcon-api.conf:/etc/nginx/conf.d/as-capacita-phalcon-api.conf
+            - .:/www/as-capacita-phalcon-api
+            - ./docker/php/index.php:/www/as-capacita-phalcon-api/index.php
+        ports:
+            - "8089:8080" # PHP Info
+            - "81:8015" # API
+        links:
+            - php
+    php:
+        image: otaavioo/php:7.0
+        tty: true
+        environment:
+            - TERM=xterm
+            - APPLICATION_ENV=development
+        volumes:
+            - ./:/www/as-capacita-phalcon-api
+            - ./docker/php7/php-fpm.conf:/etc/php/7.0/fpm/pool.d/www.conf
+            - /tmp:/tmp
+    mariadb:
+        image: mariadb:10.1.18
+        environment:
+            - TERM=xterm
+            - MYSQL_ROOT_PASSWORD=32130
+            - MYSQL_DATABASE=ASAdministration
+        volumes:
+            - ./data:/var/lib/mysql
+            - ./docker/mariadb/my.cnf:/etc/mysql/my.cnf
+        ports:
+            - "3306:3306"
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        environment:
+            - TERM=xterm
+            - MYSQL_ROOT_PASSWORD=32130
+            - PMA_HOST=mariadb
+        ports:
+            - "80:80"

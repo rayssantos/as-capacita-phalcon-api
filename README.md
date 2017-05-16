@@ -8,12 +8,12 @@
 
 ### Phalcon API
 
-#####Clone do Projeto
+##### Clone do Projeto
 ```bash
 $ git clone https://github.com/agenciasys/as-capacita-phalcon-api.git
 ```
 
-#####Estrutura do Projeto
+##### Estrutura do Projeto
 ```
 as-capacita-phalcon-api/
 ├── app
@@ -38,17 +38,17 @@ as-capacita-phalcon-api/
 └── vendor
 ```
 
-#####Variáveis de Ambiente
+##### Variáveis de Ambiente
 > Criar arquivo `.env` no diretório `app/configs` com o código abaixo
 
 ```
-DB_HOST = "localhost"
+DB_HOST = "mariadb"
 DB_USER = "user"
 DB_PASS = "passwd"
 DB_SCHEMA = "as-capacita-phalcon"
 ```
 
-#####Banco de Dados
+##### Banco de Dados
 >[CREATE DATABASE](https://github.com/agenciasys/as-capacita-phalcon-mvc/blob/master/README.md#banco-de-dados)
 
 ```sql
@@ -59,7 +59,7 @@ ALTER TABLE users
 -- ---------------------------------------------------------
 ```
 
-#####Composer
+##### Composer
 ```bash
 $ cd /www/as-capacita-phalcon-api/
 $ composer install
