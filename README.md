@@ -62,10 +62,10 @@ ALTER TABLE users
 ##### Composer
 ```bash
 $ cd /www/as-capacita-phalcon-api/
-$ composer install
+$ ./composer install
 ```
 
-#####Banco de Dados
+##### Banco de Dados
 ```sql
 CREATE TABLE `phones` (
     `iPhoneId` INT( 10 ) UNSIGNED AUTO_INCREMENT NOT NULL,
