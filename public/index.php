@@ -64,15 +64,13 @@ $di->set(
  */
 $di->set(
     'db',
-    new Mysql(
-        [
-            'host'     => getenv('DB_HOST'),
-            'username' => getenv('DB_USER'),
-            'password' => getenv('DB_PASS'),
-            'dbname'   => getenv('DB_SCHEMA'),
-            'charset'  => 'utf8',
-        ]
-    )
+    new Mysql([
+        'host'     => getenv('DB_HOST'),
+        'username' => getenv('DB_USER'),
+        'password' => getenv('DB_PASS'),
+        'dbname'   => getenv('DB_SCHEMA'),
+        'charset'  => 'utf8',
+    ])
 );
 
 /**
